@@ -21,7 +21,18 @@
 
     <v-content>
       <div>
-        <AvatarGenerator/>
+        <AvatarGenerator ref="avatar" :data="shapes"/>
+        
+      <div style="text-align: center">
+        <v-btn @click="prevShape()">
+          &lt;
+        </v-btn>
+
+        <v-btn @click="nextShape()">
+          &gt;
+        </v-btn>
+      </div>
+
         <v-footer absolute style=" height: 200px; padding: 0">
           <v-tabs 
             centered
@@ -78,7 +89,7 @@ export default {
         tabName: "Yeux",
         selectedIndex: 0,
         path: "/assets/eyes/",
-        shapes: ["01", "02"],
+        shapes: ["01", "02", "03", "04", "05"],
         shapeColor: {
           color1: "#fff0",
           color2: null,
@@ -89,38 +100,10 @@ export default {
         layersLevels: [50]
       },
       {
-        tabName: "Nez",
-        selectedIndex: 0,
-        path: "/assets/noses/",
-        shapes: ["01", "02", "03"],
-        shapeColor: {
-          color1: "#fff0",
-          color2: null,
-          set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
-        },
-        objects: [],
-        objectColor: null,
-        layersLevels: [40]
-      },
-      {
         tabName: "Bouche",
         selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
-        shapeColor: {
-          color1: "#fff0",
-          color2: null,
-          set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
-        },
-        objects: [],
-        objectColor: null,
-        layersLevels: [20]
-      },
-      {
-        tabName: "Oreilles",
-        selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
+        path: "/assets/mouths/",
+        shapes: ["01", "02"],
         shapeColor: {
           color1: "#fff0",
           color2: null,
@@ -133,8 +116,8 @@ export default {
       {
         tabName: "Barbe",
         selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
+        path: "/assets/beards/",
+        shapes: [null, "01"],
         shapeColor: {
           color1: "#fff0",
           color2: null,
@@ -147,8 +130,8 @@ export default {
       {
         tabName: "Cheveux",
         selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
+        path: "/assets/hair/",
+        shapes: [null, "01"],
         shapeColor: {
           color1: "#fff0",
           color2: null,
@@ -161,8 +144,8 @@ export default {
       {
         tabName: "Cheveux longs",
         selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
+        path: "/assets/longhair/",
+        shapes: [null, "01"],
         shapeColor: {
           color1: "#fff0",
           color2: null,
@@ -175,8 +158,8 @@ export default {
       {
         tabName: "Arrière plan",
         selectedIndex: 0,
-        path: "/assets/mouthes/",
-        shapes: ["01", "02", "03", "04"],
+        path: "/assets/background/",
+        shapes: [null, "01", "02", "03", "04"],
         shapeColor: null,
         objects: [],
         objectColor: null,
@@ -190,14 +173,30 @@ export default {
   methods: {
     updateShapeCollection () {
       console.log("updateShapeCollection", this.currentTab);
-
       this.currentImgs = this.shapes[this.currentTab].shapes;
     },
     selectShape(idx) {
       console.log("select ", this.currentTab, idx);
       this.shapes[this.currentTab].selectedIndex = idx;
-
-    }
+      this.$refs.avatar.refreshCanvas();
+    },
+      prevShape() {
+        if (this.shapes[this.currentTab].shapes.length > 1) {
+          this.shapes[this.currentTab].selectedIndex--;
+          this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
+          if (this.shapes[this.currentTab].selectedIndex < 0) {
+            this.shapes[this.currentTab].selectedIndex = this.shapes[this.currentTab].shapes.length - 1;
+          }
+          this.$refs.avatar.refreshCanvas();
+        }
+      },
+      nextShape() {
+        if (this.shapes[this.currentTab].shapes.length > 1) {
+          this.shapes[this.currentTab].selectedIndex++;
+          this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
+          this.$refs.avatar.refreshCanvas();
+        }
+      }
   }
 };
 </script>
