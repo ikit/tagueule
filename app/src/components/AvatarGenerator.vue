@@ -34,21 +34,42 @@
         let layers = this.data.filter(e => e.shapes[e.selectedIndex] !== null) ;
         
         layers = layers.map(e => ({ 
-          path: `${e.path}${e.shapes[e.selectedIndex]}.png`, 
+          shapePath: `${e.path}${e.shapes[e.selectedIndex]}.png`, 
+          backPath: e.objects[e.selectedIndex] ? `${e.path}${e.objects[e.selectedIndex]}.svg` : null, 
           lvl: e.layersLevels[0]}));
 
         // On ordonne les layers pour les dessiner dans l'ordre
         layers = layers.sort((a, b) => { return a.lvl - b.lvl})
 
         // On dessine dans le canvas
-        // TODO: En premier les couleurs
-        // En second les contours
+        const scale = 1/2;
+
         for (const layer of layers) {
-          fabric.Image.fromURL(layer.path, function(oImg) {
-            // scale image down, and flip it, before adding it onto canvas
-            oImg.scale(0.5); // img source are 512x512 and canvas 256x256
-            canvas.add(oImg);
-          });
+          // En premier la couleur de fond
+          if (layer.backPath) {
+            fabric.loadSVGFromURL(layer.backPath, 
+              function(objs) {
+                // scale image down, and flip it, before adding it onto canvas
+                // const grp = fabric.util.groupSVGElements(objs, opts);
+                for (const o of objs) {
+                  o.scale(0.5);
+                  o.set({left: o.left * scale, top: o.top * scale, fill: "blue"})
+                  canvas.add(o);
+                  console.log("ADD SVG", o)
+                }
+                //canvas.add(grp);
+                //objs.scaleToHeight(100);
+              }
+            );
+          }
+          // Par dessus les contours
+          if (layer.shapePath) {
+            fabric.Image.fromURL(layer.shapePath, function(oImg) {
+              // scale image down, and flip it, before adding it onto canvas
+              oImg.scale(scale); // img source are 512x512 and canvas 256x256
+              canvas.add(oImg);
+            });
+          }
         }
       },
     }

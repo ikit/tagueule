@@ -81,7 +81,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null, null, null, null, null, null, null, null, null],
         objectColor: null,
         layersLevels: [0]
       },
@@ -95,7 +95,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null, null, null, null, null],
         objectColor: null,
         layersLevels: [50]
       },
@@ -109,7 +109,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null, null],
         objectColor: null,
         layersLevels: [20]
       },
@@ -123,7 +123,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null],
         objectColor: null,
         layersLevels: [10, 30]
       },
@@ -137,7 +137,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null, "01"],
         objectColor: null,
         layersLevels: [70, 45]
       },
@@ -151,7 +151,7 @@ export default {
           color2: null,
           set: ["#fff0", "#fff", "#f00", "#0f0", "#00f"]
         },
-        objects: [],
+        objects: [null, null],
         objectColor: null,
         layersLevels: [-20]
       },
@@ -161,7 +161,7 @@ export default {
         path: "/assets/background/",
         shapes: [null, "01", "02", "03", "04"],
         shapeColor: null,
-        objects: [],
+        objects: [null, null, null, null, null, null],
         objectColor: null,
         layersLevels: [-50]
       }
