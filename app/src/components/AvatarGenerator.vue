@@ -16,20 +16,19 @@
       },
     },
     data: () => ({
-      
+      canvasItems: [] // La liste des objets (FabricJS) à dessiner dans l'ordre dans le canvas
     }),
     mounted: function () {
       canvas = new fabric.Canvas('canvas');
 
-      this.refreshCanvas() ;
+      this.resetAvatar() ;
     },
-    methods: {  
-      refreshCanvas() {
-        // On clean tout
-        for (const item of canvas.getObjects()) {
-          canvas.remove(item);
-        }
-
+    methods: {
+      // Charge l'ensemble des éléments composant l'avatar
+      resetAvatar() {
+        // On vide le cache
+        this.canvasItems.length = 0;
+        
         // On récupère les layers à dessiner
         let layers = this.data.filter(e => e.shapes[e.selectedIndex] !== null) ;
         
@@ -53,9 +52,9 @@
                 // const grp = fabric.util.groupSVGElements(objs, opts);
                 for (const o of objs) {
                   o.scale(0.5);
-                  o.set({left: o.left * scale, top: o.top * scale, fill: "blue"})
+                  o.set({left: o.left * scale, top: o.top * scale, fill: "blue"});
                   canvas.add(o);
-                  console.log("ADD SVG", o)
+                  console.log("ADD SVG", o);
                 }
                 //canvas.add(grp);
                 //objs.scaleToHeight(100);
@@ -72,6 +71,29 @@
           }
         }
       },
+      // Ne recharge que l'élément modifié
+      refreshAvatar() {
+
+        
+      },
+      // Redessine tous les items du canvas quand ceux-ci sont tous pret à être affiché
+      refreshCanvas() {
+        // Avant de redessiner, on vérifie que tous les items sont pret
+        const notReady = this.canvasItems.filter(e => !e.ready) ;
+        if (notReady.length > 0) {
+          // Certains éléments sont encore en train d'être chargé, on attend
+          return;
+        }
+        
+        // On clean tout
+        for (const item of canvas.getObjects()) {
+          canvas.remove(item);
+        }
+        // On redessine tout
+        for (const item in this.canvasItems) {
+          canvas.add(item.obj);
+        }
+      }
     }
   }
 </script>
