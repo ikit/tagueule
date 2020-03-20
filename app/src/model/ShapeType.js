@@ -4,7 +4,7 @@
  * sera dessinée
  * Le chemin où sont situés les svg correspondant à ces formes doit être: `/assets/${shapeType}/${shapeFamilly}/${shapeNumber}.svg`
  */
-const ShapeType = {
+export const ShapeType = {
     "background":0,
     "face":1,
     "faceAccessory":2,

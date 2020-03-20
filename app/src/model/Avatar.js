@@ -5,7 +5,7 @@ import { ShapeType } from "./ShapeType";
 /**
  * Défini un avatar
  */
-export class Avatar {
+export default class Avatar {
     shapes = [];
 
     constructor() {
@@ -15,10 +15,10 @@ export class Avatar {
     // Réinitialise l'avatar avec tout les rélage de base
     reset() {
         this.shapes = [];
-        for (const t of ShapeType) {
+        for (const t in ShapeType) {
             // Pour chaque type de forme, au maximum 3 couleurs peuvent être réglée
             // null équivaut à pas de couleur c'est à dire transparent
-            this.shapes.push(new Shape(t));
+            //this.shapes.push(new Shape());
         }
     }
 
@@ -26,10 +26,10 @@ export class Avatar {
     random() {
         this.colorPalette = new ColorPalette();
         this.shapes = [];
-        for (const t of ShapeType) {
+        for (const t in ShapeType) {
             // Pour chaque type de forme, au maximum 3 couleurs peuvent être réglée
             // null équivaut à pas de couleur c'est à dire transparent
-            this.shapes.push(new Shape(t));
+            //this.shapes.push(new Shape());
         }
     }
 
@@ -40,6 +40,7 @@ export class Avatar {
 
     // Décode la signature et retourne l'avatar correspondant
     setFromSignature(avatar) {
+        this.shapes = Array.from(avatar.shapes);
         this.random();
     } 
 }

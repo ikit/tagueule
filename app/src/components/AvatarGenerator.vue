@@ -6,12 +6,15 @@
 
 <script>
   import { fabric } from "fabric";
+  import { Avatar } from "../model/Avatar";
+
+
   let canvas = null;
   export default {
     name: 'AvatarGenerator',
     props: {
       data: {
-          type: Array,
+          type: Avatar,
           default: () => ([]),
       },
     },

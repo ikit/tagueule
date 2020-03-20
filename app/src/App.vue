@@ -21,36 +21,20 @@
 
     <v-content>
       <div>
-        <AvatarGenerator ref="avatar" :data="shapes"/>
+        <AvatarGenerator ref="avatar" :data="avatar"/>
         
       <div style="text-align: center">
-        <v-btn @click="prevShape()">
+        <!-- <v-btn @click="prevShape()">
           &lt;
         </v-btn>
 
         <v-btn @click="nextShape()">
           &gt;
-        </v-btn>
+        </v-btn> -->
       </div>
 
         <v-footer absolute style=" height: 200px; padding: 0">
-          <v-tabs 
-            centered
-            v-model="currentTab"
-            @change="updateShapeCollection"
-            style="margin: 0; padding: 0">
-              <v-tab 
-                v-for="s in shapes" 
-                :key="s.tabName">{{s.tabName}}</v-tab>
-          </v-tabs>
-          <div class="shapesList">
-            <!-- liste d'image en fonction de l'onglet sélectionné -->
-            <img 
-              v-for="(i, idx) in shapes[currentTab].shapes" 
-              :key="idx" 
-              @click="selectShape(idx)"
-              :src="`${shapes[currentTab].path}${i}.png`"/>
-          </div>
+          <ShapesBrowser ref="browser" :data="shapesCollection"></ShapesBrowser>
         </v-footer>
       </div>
     </v-content>
@@ -59,9 +43,11 @@
 
 <script>
 import AvatarGenerator from './components/AvatarGenerator';
+import ShapesBrowser from './components/ShapesBrowser';
+
 import ColorPalette from "./model/ColorPalette";
 import Avatar from "./model/Avatar";
-import ShapeBrowser from "./model/ShapeBrowser";
+import ShapesCollection from "./model/ShapesCollection";
 import ShapeType from "./model/ShapeType";
 
 export default {
@@ -69,71 +55,48 @@ export default {
 
   components: {
     AvatarGenerator,
+    ShapesBrowser
   },
 
   data: () => ({
-    currentTab: 0,
-    currentImgs: [],
-    colorPalette: new ColorsPalette(),
+    colorPalette: new ColorPalette(),
     avatar: new Avatar(),
-    shapeBrowser: new ShapeBrowser(),
+    shapesCollection: new ShapesCollection(),
   }),
   mounted: function() {
-    this.updateShapeCollection();
+    // this.updateShapeCollection();
 
     console.log("colorPalette", this.colorPalette);
     console.log("avatar", this.avatar);
-    console.log("shapeBrowser", this.shapeBrowser);
+    console.log("shapesCollection", this.shapesCollection);
   },
   methods: {
-    updateShapeCollection () {
-      console.log("updateShapeCollection", this.currentTab);
-      this.currentImgs = this.shapes[this.currentTab].shapes;
-    },
-    selectShape(idx) {
-      console.log("select ", this.currentTab, idx);
-      this.shapes[this.currentTab].selectedIndex = idx;
-      this.$refs.avatar.refreshCanvas();
-    },
-      prevShape() {
-        if (this.shapes[this.currentTab].shapes.length > 1) {
-          this.shapes[this.currentTab].selectedIndex--;
-          this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
-          if (this.shapes[this.currentTab].selectedIndex < 0) {
-            this.shapes[this.currentTab].selectedIndex = this.shapes[this.currentTab].shapes.length - 1;
-          }
-          this.$refs.avatar.refreshCanvas();
-        }
-      },
-      nextShape() {
-        if (this.shapes[this.currentTab].shapes.length > 1) {
-          this.shapes[this.currentTab].selectedIndex++;
-          this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
-          this.$refs.avatar.refreshCanvas();
-        }
-      }
+    // selectShape(idx) {
+    //   console.log("select ", this.currentTab, idx);
+    //   this.shapes[this.currentTab].selectedIndex = idx;
+    //   this.$refs.avatar.refreshCanvas();
+    // },
+    // prevShape() {
+    //   if (this.shapes[this.currentTab].shapes.length > 1) {
+    //     this.shapes[this.currentTab].selectedIndex--;
+    //     this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
+    //     if (this.shapes[this.currentTab].selectedIndex < 0) {
+    //       this.shapes[this.currentTab].selectedIndex = this.shapes[this.currentTab].shapes.length - 1;
+    //     }
+    //     this.$refs.avatar.refreshCanvas();
+    //   }
+    // },
+    // nextShape() {
+    //   if (this.shapes[this.currentTab].shapes.length > 1) {
+    //     this.shapes[this.currentTab].selectedIndex++;
+    //     this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
+    //     this.$refs.avatar.refreshCanvas();
+    //   }
+    // }
   }
 };
 </script>
 
 <style>
 
-
-
-.shapesList {
-  overflow: auto;
-  white-space: nowrap;
-  height: 150px;
-  background: #f5f5f5;
-  padding: 25px 5px 0 5px;
-
-
-}
-
-.shapesList img {
-    height: 100px;
-    display: inline-block;
-    margin-right: 10px; 
-    border: 1px solid #bbb;
-  }
 </style>

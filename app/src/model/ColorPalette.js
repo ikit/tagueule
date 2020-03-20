@@ -3,7 +3,7 @@ import { ShapeType } from "./ShapeType";
 /**
  * Décris les couleurs utilisés pour chaques parties d'un avatar
  */
-export class ColorPalette {
+export default class ColorPalette {
     palette = {}
 
     constructor() {
@@ -12,7 +12,7 @@ export class ColorPalette {
 
     // Réinitialise la palette de couleurs en fonction des types de formes existant
     reset() {
-        for (const t of ShapeType) {
+        for (const t in ShapeType) {
             // Pour chaque type de forme, au maximum 3 couleurs peuvent être réglée
             // null équivaut à pas de couleur c'est à dire transparent
             this.palette[t] = [null, null, null];
