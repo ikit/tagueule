@@ -29,6 +29,7 @@
     methods: {
       // Charge l'ensemble des éléments composant l'avatar
       resetAvatar() {
+        console.log("ttata resetAvatar")
         // On vide le cache
         this.canvasItems.length = 0;
         

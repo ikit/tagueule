@@ -21,7 +21,7 @@
 
     <v-content>
       <div>
-        <AvatarGenerator ref="avatar" :data="avatar"/>
+        <AvatarGenerator ref="avatarGenerator" :data="avatar"/>
         
       <div style="text-align: center">
         <!-- <v-btn @click="prevShape()">
@@ -34,7 +34,10 @@
       </div>
 
         <v-footer absolute style=" height: 200px; padding: 0">
-          <ShapesBrowser ref="browser" :data="shapesCollection"></ShapesBrowser>
+          <ShapesBrowser 
+            ref="browser" 
+            :data="shapesCollection"
+            v-on:selectionUpdated="updateAvatar($event)"></ShapesBrowser>
         </v-footer>
       </div>
     </v-content>
@@ -71,28 +74,12 @@ export default {
     console.log("shapesCollection", this.shapesCollection);
   },
   methods: {
-    // selectShape(idx) {
-    //   console.log("select ", this.currentTab, idx);
-    //   this.shapes[this.currentTab].selectedIndex = idx;
-    //   this.$refs.avatar.refreshCanvas();
-    // },
-    // prevShape() {
-    //   if (this.shapes[this.currentTab].shapes.length > 1) {
-    //     this.shapes[this.currentTab].selectedIndex--;
-    //     this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
-    //     if (this.shapes[this.currentTab].selectedIndex < 0) {
-    //       this.shapes[this.currentTab].selectedIndex = this.shapes[this.currentTab].shapes.length - 1;
-    //     }
-    //     this.$refs.avatar.refreshCanvas();
-    //   }
-    // },
-    // nextShape() {
-    //   if (this.shapes[this.currentTab].shapes.length > 1) {
-    //     this.shapes[this.currentTab].selectedIndex++;
-    //     this.shapes[this.currentTab].selectedIndex %= this.shapes[this.currentTab].shapes.length;
-    //     this.$refs.avatar.refreshCanvas();
-    //   }
-    // }
+    updateAvatar(event) {
+      console.log("updateAvatar", event);
+      this.avatar.setFromShapesBrowser(this.shapesCollection);
+      this.avatarGenerator.resetAvatar();
+
+    }
   }
 };
 </script>

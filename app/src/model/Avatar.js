@@ -43,4 +43,9 @@ export default class Avatar {
         this.shapes = Array.from(avatar.shapes);
         this.random();
     } 
+
+    // Met à jour l'avatar à partir des informations 
+    setFromShapesBrowser(shapesBrowser) {
+        console.log("setFromShapesBrowser", shapesBrowser);
+    }
 }

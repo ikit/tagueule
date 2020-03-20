@@ -11,7 +11,6 @@
         </v-tabs>
         <div style="display: flex; width: 100%">
             <div style="flex: 0 1 0; min-width: 150px; text-align: center">
-                Style
                 <v-select
                     v-model="currentCollectionIdx"
                     :items="collections"
@@ -21,14 +20,15 @@
                     item-value="idx"
                     ></v-select>
             </div>
-            <div style="flex: 1 0 0; border: 1px solid blue">
+            <div style="flex: 1 0 0; margin-left: 0px; border-left: 1px solid #bbb">
                 <div class="shapesList">
                     <!-- liste d'image en fonction de l'onglet sélectionné -->
                     <img 
                         v-for="(elt, idx) in elements" 
                         :key="idx" 
                         @click="selectElement(idx)"
-                        :src="`/assets${collections[currentCollectionIdx].path}/${elt}.svg`"/>
+                        v-bind:class="{ active: idx === currentElementIdx }"
+                        :src=" elt ? `/assets${collections[currentCollectionIdx].path}/${elt}.svg` : `/assets/empty.png`"/>
                 </div>
             </div>
         </div>
@@ -74,7 +74,9 @@ export default {
         selectElement(idx) {
             this.currentElementIdx = idx;
             this.collections[this.currentCollectionIdx].selectedIndex = idx;
-        }
+            // emit
+            this.$emit('selectionUpdated', idx);
+        },
     }
 }
 
@@ -96,5 +98,10 @@ export default {
     display: inline-block;
     margin-right: 10px; 
     border: 1px solid #bbb;
+}
+
+.active {
+    border: 1px solid #000;
+    background: khaki;
 }
 </style>
