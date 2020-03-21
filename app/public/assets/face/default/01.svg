@@ -26,16 +26,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="253.03527"
-     inkscape:cy="27.433076"
+     inkscape:zoom="1.979899"
+     inkscape:cx="228.499"
+     inkscape:cy="234.43919"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="svg4511"
      showgrid="false"
      units="px"
-     inkscape:window-width="1600"
-     inkscape:window-height="837"
-     inkscape:window-x="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1" />
   <metadata
@@ -46,31 +46,21 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="back"
-     sodipodi:insensitive="true">
-    <path
-       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 34.584822,80.282141 -4.913691,-0.566965 -4.535715,-1.795385 -2.078869,-3.685268 -0.566964,-7.370535 1.228423,-5.669645 2.267857,-3.212795 3.685268,-0.944941 4.819195,0.283482 1.13393,-4.630208 2.645834,-3.96875 4.91369,-6.52009 4.157737,-3.874257 8.031993,-3.118302 6.331103,-1.41741 7.9375,-0.566965 4.441219,0.283483 7.559524,2.267857 6.236608,2.267855 4.535712,3.779763 4.346729,5.575149 3.401785,6.047619 1.13393,3.96875 3.59077,-0.472469 4.8192,0.944938 2.83482,3.590774 0.37797,4.063246 -0.18898,6.236605 -0.66146,3.968749 -2.17336,2.834823 -4.72471,1.41741 -3.96875,0.188989 v 5.197173 l -0.94494,5.008185 -1.889879,3.874254 -11.339285,8.97694 -14.835565,8.40997 -3.874254,0.56696 -4.346729,-0.47247 -11.433778,-5.95313 -13.04018,-9.4494 -3.77976,-4.91369 -1.511906,-7.748514 z"
-       id="path5068"
-       inkscape:connector-curvature="0" />
-  </g>
-  <g
-     inkscape:label="front"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-161.53331)">
-    <image
-       y="161.53331"
-       x="0"
-       id="image5064"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
+  <path
+     style="fill:#ffffff;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 34.477769,57.423965 1.469983,-5.479026 6.414468,-9.087165 4.009043,-3.741772 6.949006,-3.34087 9.48807,-2.672694 h 8.018084 l 5.211757,0.935443 8.15172,2.53906 5.87993,2.939966 5.879928,6.681737 4.409952,7.082642 0.66817,4.276312 3.87541,-0.534538 4.00904,0.668174 2.13816,1.603615 1.60362,3.073601 0.53453,5.211755 -0.66817,7.884451 -2.40543,3.207234 -3.4745,1.33635 -5.34539,0.267268 v 7.082642 l -1.603617,5.211757 -3.474503,4.009041 -13.630746,10.022612 -10.958052,5.07812 -4.142677,0.66817 -4.810852,-0.93544 -9.488067,-5.34539 -12.160763,-8.418994 -5.078121,-5.34539 -1.202714,-5.746295 -0.534538,-6.280833 -4.543583,-0.53454 -4.009043,-1.336347 -2.53906,-3.34087 -0.534539,-6.280832 0.935443,-7.082642 2.138156,-3.34087 2.53906,-1.202714 z"
+     id="lvl25-col10"
+     inkscape:connector-curvature="0"
+     inkscape:label="lvl25-col10" />
+  <image
+     y="9.3330505e-005"
+     x="0"
+     id="lvl29"
+     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABmJLR0QA/wD/AP+gvaeTAAAACXBI
 WXMAALiMAAC4jAHM9rsvAAAAB3RJTUUH5AIOFAs4C8e9ngAAIABJREFUeNrtvXecpFlVuP90mJ6e
 PLuzOe+yLCwscZGcQaKKiAFkxaw/MWBAQFQERSVI+AqKBFEQlCCSg2R2WeLmwOY0G2Z30k7omZ7p
 VL8/znmtt2uqOsxUTddb9TyfT326u6bCO/e996R77jkgIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
@@ -448,8 +438,9 @@ RERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
 RERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERE
 Ks3/D2XPHFAXaoZXAAAAAElFTkSuQmCC
 "
-       preserveAspectRatio="none"
-       height="135.46666"
-       width="135.46666" />
-  </g>
+     preserveAspectRatio="none"
+     height="135.46667"
+     width="135.46667"
+     inkscape:label="lvl29"
+     style="stroke-width:0.07999999" />
 </svg>

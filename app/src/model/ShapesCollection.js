@@ -14,7 +14,7 @@ export default class ShapesCollection {
                   idx: 0,
                   name: "Normal",
                   path: "/face/default",
-                  elements: [null, "01", "02", "03"],
+                  elements: [null, "01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
                   selectedIndex: 1,
                 },
                 {
