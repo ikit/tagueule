@@ -1,24 +1,52 @@
 # tagueule
 
-## Project setup
-```
-npm install
-```
+Tagueule est un générateur d'avatar reprenant le look d'un vieux générateur (2004) trouvé sur le site Koreus. Cette ancien générateur étant destiné à disparaitre car 100% Flash, j'ai eu envie de le refaire avec des technos récentes, tout en l'enrichissant.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+ * [Version de 2004](https://www.koreus.com/files/200407/generateur_avatars.html)
+ * [Nouvelle version](http://tagueule.io)
 
-### Compiles and minifies for production
+## Contribution
+Ce projet est libre et open-source. Sous license [GPL 3.0](https://github.com/ikit/tagueule/blob/master/LICENSE).
+
+Toutes participation est la bienvenue. En particulier les artistes en herbes qui souhaiteraient enrichir l'application avec de nouvelles formes ou fonctionnalités.
+
+**Nous recherchons de l'aide pour:**
+ * Refaire en svg les tracés (actuellement en png) des formes
+ * Ajouter des ombres pour donner plus de relief et de vie au avatars
+ * Contribuer à enrichir la bibliothèque en ajoutant de nouvelles formes
+
+
+## Fonctionnement du générateur
+
+
+### Organisation des bibliothèques et collections
 ```
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
+### Composition des SVG
+La création des formes en SVG doit rigouresement respecter certaines règles afin de bien s'intégrer dans le générateur
+
+Les règles d'or:
+ * Garder une structure simple, pas de groupe, etc
+ * Nommer les éléments avec un ID selon le parte : `lvlXXX[-colYY][-ZZ]`
+ * * `lvlXXX`: où XXX varie de 0 à 999 indique le niveau où sera dessinée la forme (le z-index si vous préférez). Il faut respecter les plages prédéfinies
+ * * * 0 à 9: L'arrière plan (défaut: 5)
+ * * * 10 à 19: Les cheveux long (défaut: 15)
+ * * * 20 à 29: Le visage (défaut: 25)
+ * * * 30 à 39: Les accessoires du visage (défaut: 35)
+ * * * 40 à 49: La bouche (défaut: 45)
+ * * * 50 à 59: Les accessoires de la bouche (défaut: 55)
+ * * * 60 à 69: Les yeux (défaut: 65)
+ * * * 70 à 79: Les accessoires des yeux (défaut: 75)
+ * * * 80 à 89: Les cheveux (défaut: 85)
+ * * * 90 à 99: Les accessoires des cheveux (défaut: 95)
+ * * `colYY`: où YY varie de 0 à 99 indique la couleur qui sera utilisé pour remplir la forme.
+ * * * 90 à 99: Les accessoires des cheveux (défaut: 95)
+
+ 
+
+
 
 ### Lints and fixes files
 ```

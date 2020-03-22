@@ -21,7 +21,7 @@
 
     <v-content>
       <div>
-        <AvatarGenerator ref="avatarGenerator" :data="avatar"/>
+        <AvatarGenerator ref="avatarGenerator" :avatar="avatar"/>
         
       <div style="text-align: center">
         <!-- <v-btn @click="prevShape()">
@@ -76,8 +76,8 @@ export default {
   methods: {
     updateAvatar(event) {
       console.log("updateAvatar", event);
-      this.avatar.setFromShapesBrowser(this.shapesCollection);
-      this.avatarGenerator.resetAvatar();
+      this.avatar.setFromShapesCollection(this.shapesCollection);
+      this.$refs.avatarGenerator.resetAvatar();
 
     }
   }
