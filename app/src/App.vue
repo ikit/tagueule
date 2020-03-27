@@ -22,6 +22,7 @@
     <v-content>
       <div>
         <AvatarGenerator ref="avatarGenerator" :avatar="avatar"/>
+        <ColorSelector ref="colorSelector" :colorPalette="colorPalette"/>
         
       <div style="text-align: center">
         <!-- <v-btn @click="prevShape()">
@@ -47,6 +48,7 @@
 <script>
 import AvatarGenerator from './components/AvatarGenerator';
 import ShapesBrowser from './components/ShapesBrowser';
+import ColorSelector from './components/ColorSelector';
 
 import ColorPalette from "./model/ColorPalette";
 import Avatar from "./model/Avatar";
@@ -58,7 +60,8 @@ export default {
 
   components: {
     AvatarGenerator,
-    ShapesBrowser
+    ShapesBrowser,
+    ColorSelector
   },
 
   data: () => ({
