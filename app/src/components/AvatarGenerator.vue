@@ -1,7 +1,24 @@
 <template>
-  <div style="width: 256px; height: 256px; margin: 50px auto">
-    <canvas id="canvas" width="256" height="256" style="border: 1px solid #000; margin: auto"></canvas>
+  <div >
+    <v-card :width="scale*512 + 30" :height="scale*512 + 30" style="margin: 50px auto; padding: 15px">
+      <canvas id="canvas" width="512" height="512" ref="canvas"></canvas>
+    </v-card>
+    
+    <div style="margin: -35px auto; padding: 15px">
+      <v-select
+        width="200px"
+        :items="sizes"
+        v-model="scale"
+        label="Solo field"
+        solo
+        @change="resetAvatar"
+        single-line
+        item-text="name"
+        item-value="scale"
+      ></v-select>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -23,6 +40,7 @@
       },
     },
     data: () => ({
+      sizes: [{ scale:0.125, name: "64px" }, { scale:0.25, name: "128px" }, { scale:0.5, name: "256px" }, { scale:1, name: "512px" }],
       canvasItems: [] // La liste des objets (FabricJS) à dessiner dans l'ordre dans le canvas
     }),
     mounted: function () {
@@ -33,6 +51,12 @@
     methods: {
       // Charge l'ensemble des éléments composant l'avatar
       resetAvatar() {
+        // console.log(this.$refs.canvas)
+        
+        // this.$refs.canvas.width = this.scale*512;
+        // this.$refs.canvas.height = this.scale*512;
+        // this.$refs.canvas.offsetWidth = this.scale*512;
+        // this.$refs.canvas.offsetHeight = this.scale*512;
         console.log("ttata resetAvatar", this.avatar, this.scale)
         // On vide le cache
         this.canvasItems.length = 0;
@@ -92,10 +116,8 @@
         const notReady = this.avatar.shapes.filter(e => !e.ready) ;
         if (notReady.length > 0) {
           // Certains éléments sont encore en train d'être chargé, on attend
-          console.log("refreshCanvas NOT READY", notReady)
           return;
         }
-          console.log("refreshCanvas READY", this.canvasItems)
         
         // On clean tout
         for (const item of canvas.getObjects()) {
@@ -106,7 +128,6 @@
 
         // On redessine tout
         for (const item of this.canvasItems) {
-console.log(item);
 
           item.object.scale(this.scale);
           item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale, fill: item.color});
