@@ -21,7 +21,7 @@
 
     <v-content>
       <div>
-        <AvatarGenerator ref="avatarGenerator" :avatar="avatar"/>
+        <AvatarGenerator ref="avatarGenerator" :avatar="avatar" :colorPalette="colorPalette"/>
         <ColorSelector ref="colorSelector" :colorPalette="colorPalette"/>
         
       <div style="text-align: center">
@@ -70,16 +70,11 @@ export default {
     shapesCollection: new ShapesCollection(),
   }),
   mounted: function() {
-    // this.updateShapeCollection();
-
-    console.log("colorPalette", this.colorPalette);
-    console.log("avatar", this.avatar);
-    console.log("shapesCollection", this.shapesCollection);
   },
   methods: {
     updateAvatar(event) {
-      console.log("updateAvatar", event);
       this.avatar.setFromShapesCollection(this.shapesCollection);
+      this.$refs.colorSelector.applyColors(this.colorPalette);
       this.$refs.avatarGenerator.resetAvatar();
 
     }

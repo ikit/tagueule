@@ -42,7 +42,11 @@ Les règles d'or:
  * * * 80 à 89: Les cheveux (défaut: 85)
  * * * 90 à 99: Les accessoires des cheveux (défaut: 95)
  * * `colYY`: où YY varie de 0 à 99 indique la couleur qui sera utilisé pour remplir la forme.
- * * * 90 à 99: Les accessoires des cheveux (défaut: 95)
+ * * * 10 à 19: Couleurs du visage (peau: 10, barbe: 11, ...)
+ * * * 20 à 29: Couleurs de la bouche (dent: 20, langue: 21, levres: 22, gencives: 23...)
+ * * * 30 à 39: Couleurs des yeux (blanc de l'oeil: 30, pupille: 31, ...)
+ * * * 40 à 49: Couleurs des cheveux
+ * * * 50 à 59: Couleurs des cheveux longs
 
  
 

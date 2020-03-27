@@ -56,14 +56,5 @@ export default class Avatar {
         }
 
         this.shapes = newShapes;
-        console.log("setFromShapesCollection", newShapes);
-        
-        // layers = layers.map(e => ({ 
-        //   shapePath: `${e.path}${e.shapes[e.selectedIndex]}.png`, 
-        //   backPath: e.objects[e.selectedIndex] ? `${e.path}${e.objects[e.selectedIndex]}.svg` : null, 
-        //   lvl: e.layersLevels[0]}));
-
-        // // On ordonne les layers pour les dessiner dans l'ordre
-        // layers = layers.sort((a, b) => { return a.lvl - b.lvl})
     }
 }
