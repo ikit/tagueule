@@ -1,26 +1,22 @@
 <template>
   <div >
-    <v-card :width="scale*512 + 30" :height="scale*512 + 30" style="margin: 50px auto; padding: 15px; position:relative">
-      <div style="width:100%; height:100%; border: 1px solid #aaa; background: url('/assets/workbackground.png') repeat"></div>
+    <v-card :width="scale*512 + 30" :height="scale*512 + 45 + 40" style="margin: 50px auto; position:relative">
+      <div style="position: absolute; top: 15px; left: 15px; right: 15px; bottom: 70px; border: 1px solid #aaa; background: url('/assets/workbackground.png') repeat"></div>
       <div style="position: absolute; top: 15px; left: 15px;">
-        <canvas id="canvas" width="512" height="512"></canvas>
+        <canvas id="canvas" ref="canvas" width="512" height="512"></canvas>
       </div>
-      
+      <div style="position: absolute; right: 15px; bottom: 15px;">
+        <v-btn icon color="primary">
+          <v-icon>fa-copy</v-icon>
+        </v-btn>
+        <v-btn icon color="primary">
+          <v-icon>fa-hashtag</v-icon>
+        </v-btn>
+        <v-btn icon color="primary" @click="saveAsPng">
+          <v-icon>fa-save</v-icon>
+        </v-btn>
+      </div>
     </v-card>
-    
-    <div style="margin: -35px auto; padding: 15px">
-      <v-select
-        width="200px"
-        :items="sizes"
-        v-model="scale"
-        label="Solo field"
-        solo
-        @change="resetAvatar"
-        single-line
-        item-text="name"
-        item-value="scale"
-      ></v-select>
-    </div>
   </div>
 
 </template>
@@ -29,6 +25,7 @@
   import { fabric } from "fabric";
   import { Avatar } from "../model/Avatar";
   import { ColorPalette } from "../model/ColorPalette";
+  import * as FileSaver from "file-saver";
 
 
   let canvas = null;
@@ -118,6 +115,15 @@
           canvas.add(item.object);
                   
         }
+      },
+
+      // Sauvegarde l'avatar actuel en tant qu'image png
+      saveAsPng() {
+        // const img = this.$refs.canvas.toDataURL('png');
+
+        this.$refs.canvas.toBlob(function(blob) {
+          FileSaver.saveAs(blob, "tagueule.png");
+        });
       }
     }
   }
