@@ -22,7 +22,7 @@
     <v-content>
       <div>
         <AvatarGenerator ref="avatarGenerator" :avatar="avatar" :colorPalette="colorPalette"/>
-        <ColorSelector ref="colorSelector" :colorPalette="colorPalette"/>
+        <ColorSelector ref="colorSelector" :colorPalette="colorPalette" v-on:colorsChanged="updateAvatar"/>
         
       <div style="text-align: center">
         <!-- <v-btn @click="prevShape()">
