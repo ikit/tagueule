@@ -164,7 +164,7 @@
 
       // Génére aléatoirement un avatar en modifiant seulement les formes
       randomize() {
-        console.log("TODO: randomize")
+        this.$emit('randomizeShapes');
       }
     }
   }
