@@ -1,14 +1,14 @@
-import { ShapeType } from "./ShapeType";
+import { AssetType } from "./AssetType";
 
 /**
  * 
  */
-export default class ShapesCollection {
+export default class AssetsCollection {
     shapes = [
         {
             name: "Visage",
             selectedIndex: 0,
-            type: ShapeType.face,
+            type: AssetType.face,
             collections: [
                 {
                   idx: 0,
@@ -29,7 +29,7 @@ export default class ShapesCollection {
         {
             name: "Bouche",
             selectedIndex: 0,
-            type: ShapeType.mouth,
+            type: AssetType.mouth,
             collections: [
                 {
                   idx: 0,
@@ -43,7 +43,7 @@ export default class ShapesCollection {
         {
             name: "Yeux",
             selectedIndex: 0,
-            type: ShapeType.eye,
+            type: AssetType.eye,
             collections: [
                 {
                   idx: 0,
@@ -57,7 +57,7 @@ export default class ShapesCollection {
         {
             name: "Cheveux",
             selectedIndex: 0,
-            type: ShapeType.hair,
+            type: AssetType.hair,
             collections: [
                 {
                   idx: 0,
@@ -71,7 +71,7 @@ export default class ShapesCollection {
         {
             name: "Cheveux longs",
             selectedIndex: 0,
-            type: ShapeType.longHair,
+            type: AssetType.longHair,
             collections: [
                 {
                   idx: 0,
@@ -85,7 +85,7 @@ export default class ShapesCollection {
         {
             name: "Arrière plan",
             selectedIndex: 0,
-            type: ShapeType.background,
+            type: AssetType.background,
             collections: [
                 {
                   idx: 0,

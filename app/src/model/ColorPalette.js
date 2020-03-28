@@ -1,4 +1,4 @@
-import { ShapeType } from "./ShapeType";
+import { AssetType } from "./AssetType";
 
 
 const DEFAULT = {
@@ -33,7 +33,7 @@ export default class ColorPalette {
 
     // Réinitialise la palette de couleurs en fonction des types de formes existant
     reset() {
-        for (const t in ShapeType) {
+        for (const t in AssetType) {
             // Pour chaque type de forme, au maximum 10 couleurs peuvent être réglées
             // null équivaut à pas de couleur c'est à dire transparent
             for (let idx = 0; idx < 10; idx++) {

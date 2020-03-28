@@ -1,5 +1,5 @@
 <template>
-  <div style="position: absolute; right: 10px; top: 50px; max-width:500px">
+  <div>
     <v-card
         class="mx-auto"
         tile

@@ -38,14 +38,14 @@
 
 
 <script>
-import { ShapesCollection } from "../model/ShapesCollection";
+import { AssetsCollection } from "../model/AssetsCollection";
 
 
 export default {
     name: 'ShapesBrowser',
     props: {
         data: {
-            type: ShapesCollection,
+            type: AssetsCollection,
             default: () => ([]),
         },
     },

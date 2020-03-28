@@ -1,50 +1,7 @@
 <template>
-  <div >
-    <v-card :width="scale*512 + 30" :height="scale*512 + 45 + 40" style="margin: 50px auto; position:relative">
-      <div style="position: absolute; top: 15px; left: 15px; right: 15px; bottom: 70px; border: 1px solid #aaa; background: url('/assets/workbackground.png') repeat"></div>
-      <div style="position: absolute; top: 15px; left: 15px;">
-        <canvas id="canvas" ref="canvas" width="512" height="512"></canvas>
-      </div>
-      <div style="position: absolute; left: 15px; bottom: 15px;">
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-btn icon color="primary" v-on="on" @click="save">
-              <v-icon>fa-save</v-icon>
-            </v-btn>
-          </template>
-          <span>Sauvegarder cet avatar dans l'historique</span>
-        </v-tooltip>
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-btn icon color="primary" v-on="on" @click="getHashcode">
-              <v-icon>fa-hashtag</v-icon>
-            </v-btn>
-          </template>
-          <span>Obtenir l'url de cet avatar</span>
-        </v-tooltip>
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-btn icon color="primary" v-on="on" @click="saveAsPng">
-              <v-icon>fa-file-download</v-icon>
-            </v-btn>
-          </template>
-          <span>Télécharger l'image de cet avatar</span>
-        </v-tooltip>
-      </div>
-        
-      <div style="position: absolute; right: 15px; bottom: 15px;">
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-btn icon color="primary" v-on="on" @click="randomize">
-              <v-icon>fa-dice</v-icon>
-            </v-btn>
-          </template>
-          <span>Générer aléatoirement</span>
-        </v-tooltip>
-      </div>
-    </v-card>
+  <div class="background">
+    <canvas id="canvas" ref="canvas" class="canvas" width="256px" height="256px"></canvas>
   </div>
-
 </template>
 
 <script>
@@ -55,6 +12,7 @@
 
 
   let canvas = null;
+  let canvasDom = document.getElementsByTagName('canvas')[0];
   export default {
     name: 'AvatarGenerator',
     props: {
@@ -72,7 +30,6 @@
       },
     },
     data: () => ({
-      sizes: [{ scale:0.125, name: "64px" }, { scale:0.25, name: "128px" }, { scale:0.5, name: "256px" }, { scale:1, name: "512px" }],
       canvasItems: [] // La liste des objets (FabricJS) à dessiner dans l'ordre dans le canvas
     }),
     mounted: function () {
@@ -98,9 +55,10 @@
                   // On extrait les infos lvl et colorId contenu dans l'id de l'objet svg
                   const tokens = o.id.split("-");
                   that.canvasItems.push({
+                    asset: layer.path,
                     lvl: Number.parseInt(tokens[0].substring(3)),
                     colorId: tokens.length > 1 ? tokens[1] : null,
-                    color: "blue",
+                    color: null,
                     object: o // On garde cet élément pour le dessiner plus tard quand tout les fichiers svg auront été parsés
                   })
                 }
@@ -131,6 +89,14 @@
         for (const item of canvas.getObjects()) {
           canvas.remove(item);
         }
+        
+        // On s'assure que le canvas est de la bonne taille
+        // console.log(canvas, canvasDom);
+        // this.$refs.canvas.width = this.scale * 512;
+        // this.$refs.canvas.height = this.scale * 512;
+        // this.$refs.canvas.style.width = `${this.scale * 512}px`;
+        // this.$refs.canvas.style.height = `${this.scale * 512}px`;
+
         // On réordonne les items correctement
         this.canvasItems = this.canvasItems.sort((a, b) => { return a.lvl - b.lvl})
 
@@ -140,32 +106,23 @@
           item.color = this.colorPalette.getColor(item.colorId);
           item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale, fill: item.color});
           canvas.add(item.object);
-                  
         }
       },
 
-      // Sauvegarde 
-      save() {
-        console.log("TODO: getHashcode")
-      },
-
-      // Calcule le hashcode de l'avatar qui permet de reparamétrer directement l'éditeur pour obtenir l'avatar
-      getHashcode() {
-        console.log("TODO: getHashcode")
-      },
       // Sauvegarde l'avatar actuel en tant qu'image png
       saveAsPng() {
-        // const img = this.$refs.canvas.toDataURL('png');
-
         this.$refs.canvas.toBlob(function(blob) {
           FileSaver.saveAs(blob, "tagueule.png");
         });
       },
-
-      // Génére aléatoirement un avatar en modifiant seulement les formes
-      randomize() {
-        this.$emit('randomizeShapes');
-      }
     }
   }
 </script>
+
+
+<style scoped>
+.background {
+  border: 1px solid #aaa; 
+  background: url('/assets/workbackground.png') repeat;
+}
+</style>
