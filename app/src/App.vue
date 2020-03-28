@@ -5,17 +5,17 @@
       color="primary"
       dark
     >
-      <span class="d-flex appTitle">Ta gueule !</span>
+      <span style="font-variant: small-caps;">{{ title }}</span>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/ikit/tagueule"
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon left >fab fa-github</v-icon>
+        <span class="mr-2">Version {{ version }}</span>
       </v-btn>
     </v-app-bar>
 
@@ -55,6 +55,8 @@ import Avatar from "./model/Avatar";
 import ShapesCollection from "./model/ShapesCollection";
 import ShapeType from "./model/ShapeType";
 
+import * as pjson from "../package.json";
+
 export default {
   name: 'App',
 
@@ -65,11 +67,20 @@ export default {
   },
 
   data: () => ({
+    title: pjson.default.name,
+    version: pjson.default.version,
     colorPalette: new ColorPalette(),
     avatar: new Avatar(),
     shapesCollection: new ShapesCollection(),
+    sizes: [
+      { name: "en petit", scale: 0.25},
+      { name: "en moyen", scale: 0.5},
+      { name: "en gros", scale: 1},
+    ]
   }),
   mounted: function() {
+    // On récupère les paramètres de l'url
+    console.log(window.location.search);
   },
   methods: {
     updateAvatar(event) {

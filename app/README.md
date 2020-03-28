@@ -1,6 +1,6 @@
 # tagueule
 
-Tagueule est un générateur d'avatar reprenant le look d'un vieux générateur (2004) trouvé sur le site Koreus. Cette ancien générateur étant destiné à disparaitre car 100% Flash, j'ai eu envie de le refaire avec des technos récentes, tout en l'enrichissant.
+Tagueule est un générateur d'avatar reprenant le look d'un vieux générateur (2004) trouvé sur le site Koreus. Cette ancien générateur étant destiné à disparaitre car 100% Flash, j'ai eu envie de le refaire avec des technos récentes, tout en l'enrichissant et le modernisant.
 
  * [Version de 2004](https://www.koreus.com/files/200407/generateur_avatars.html)
  * [Nouvelle version](http://tagueule.io)
@@ -14,6 +14,28 @@ Toutes participation est la bienvenue. En particulier les artistes en herbes qui
  * Refaire en svg les tracés (actuellement en png) des formes
  * Ajouter des ombres pour donner plus de relief et de vie au avatars
  * Contribuer à enrichir la bibliothèque en ajoutant de nouvelles formes
+ * [Relever les bugs](https://github.com/ikit/tagueule/issues) et pourquoi aider à les corriger vous savez développer
+
+
+
+
+## Installation
+**Via le dockerfile**
+```
+cd ~/git/tagueule/app
+docker build -t tagueuleImage .
+docker run -it -p 8080:80 --rm --name tagueule-app tagueuleImage
+```
+L'application est désormais accessible à l'adresse `localhost:8080`
+
+
+**Via NodeJS directement**
+```
+cd ~/git/tagueule/app
+npm install
+npm run dev
+```
+L'application est désormais accessible à l'adresse `localhost:8080`
 
 
 ## Fonctionnement du générateur
