@@ -5,16 +5,42 @@
       <div style="position: absolute; top: 15px; left: 15px;">
         <canvas id="canvas" ref="canvas" width="512" height="512"></canvas>
       </div>
+      <div style="position: absolute; left: 15px; bottom: 15px;">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn icon color="primary" v-on="on" @click="save">
+              <v-icon>fa-save</v-icon>
+            </v-btn>
+          </template>
+          <span>Sauvegarder cet avatar dans l'historique</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn icon color="primary" v-on="on" @click="getHashcode">
+              <v-icon>fa-hashtag</v-icon>
+            </v-btn>
+          </template>
+          <span>Obtenir l'url de cet avatar</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn icon color="primary" v-on="on" @click="saveAsPng">
+              <v-icon>fa-file-download</v-icon>
+            </v-btn>
+          </template>
+          <span>Télécharger l'image de cet avatar</span>
+        </v-tooltip>
+      </div>
+        
       <div style="position: absolute; right: 15px; bottom: 15px;">
-        <v-btn icon color="primary">
-          <v-icon>fa-copy</v-icon>
-        </v-btn>
-        <v-btn icon color="primary">
-          <v-icon>fa-hashtag</v-icon>
-        </v-btn>
-        <v-btn icon color="primary" @click="saveAsPng">
-          <v-icon>fa-save</v-icon>
-        </v-btn>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn icon color="primary" v-on="on" @click="randomize">
+              <v-icon>fa-dice</v-icon>
+            </v-btn>
+          </template>
+          <span>Générer aléatoirement</span>
+        </v-tooltip>
       </div>
     </v-card>
   </div>
@@ -111,12 +137,22 @@
         // On redessine tout
         for (const item of this.canvasItems) {
           item.object.scale(this.scale);
-          item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale, fill: this.colorPalette.getColor(item.colorId)});
+          item.color = this.colorPalette.getColor(item.colorId);
+          item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale, fill: item.color});
           canvas.add(item.object);
                   
         }
       },
 
+      // Sauvegarde 
+      save() {
+        console.log("TODO: getHashcode")
+      },
+
+      // Calcule le hashcode de l'avatar qui permet de reparamétrer directement l'éditeur pour obtenir l'avatar
+      getHashcode() {
+        console.log("TODO: getHashcode")
+      },
       // Sauvegarde l'avatar actuel en tant qu'image png
       saveAsPng() {
         // const img = this.$refs.canvas.toDataURL('png');
@@ -124,6 +160,11 @@
         this.$refs.canvas.toBlob(function(blob) {
           FileSaver.saveAs(blob, "tagueule.png");
         });
+      },
+
+      // Génére aléatoirement un avatar en modifiant seulement les formes
+      randomize() {
+        console.log("TODO: randomize")
       }
     }
   }

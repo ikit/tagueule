@@ -61,12 +61,12 @@
           // { id: "col45", color: "#ffdccc"}
         ]},
         { label: "Cheveux longs", colors: [ 
-          { id: "col40", color: "#996633"},
-          { id: "col41", color: "#f00"},
-          // { id: "col42", color: "#ffdccc"},
-          // { id: "col43", color: "#ffdccc"},
-          // { id: "col44", color: "#ffdccc"},
-          // { id: "col45", color: "#ffdccc"}
+          { id: "col50", color: "#996633"},
+          { id: "col51", color: "#f00"},
+          // { id: "col52", color: "#ffdccc"},
+          // { id: "col53", color: "#ffdccc"},
+          // { id: "col54", color: "#ffdccc"},
+          // { id: "col55", color: "#ffdccc"}
         ]},
         { label: "Arrière plan", colors: [ 
           { id: "col00", color: null},
