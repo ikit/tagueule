@@ -29,8 +29,8 @@ Toutes participation est la bienvenue. En particulier les artistes en herbes qui
 **Via le dockerfile**
 ```
 cd ~/git/tagueule/app
-docker build -t tagueuleImage .
-docker run -it -p 8080:80 --rm --name tagueule-app tagueuleImage
+docker build -t tagueule-image .
+docker run -it -p 8080:80 --rm --name tagueule-app tagueule-image
 ```
 L'application est désormais accessible à l'adresse `localhost:8080`
 
