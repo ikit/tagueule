@@ -30,7 +30,7 @@ Toutes participation est la bienvenue. En particulier les artistes en herbes qui
 ```
 cd ~/git/tagueule/app
 docker build -t tagueule-image .
-docker run -it -p 8080:80 --rm --name tagueule-app tagueule-image
+docker run -d -p 8080:80 --rm --name tagueule-app tagueule-image
 ```
 L'application est désormais accessible à l'adresse `localhost:8080`
 
