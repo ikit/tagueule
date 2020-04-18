@@ -2,7 +2,7 @@
 
 Tagueule est un générateur d'avatar riche et moderne au look cartoonesque. Il a été imaginé pour permettre une grande diversité, et ses librairies s'enrichiront au file du temps.
 
-**[Démo](http://tagueule.com)**
+**[Démo](https://avatar.absolumentg.fr/)**
 
 ![](doc/tagueule.png) 
 
