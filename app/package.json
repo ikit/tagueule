@@ -1,7 +1,11 @@
 {
   "name": "tagueule",
   "version": "1.0.0",
-  "private": true,
+  "description": "Free avatar generator",
+  "keywords": ["avatar", "generator", "générateur", "face", "free", "online", "open", "cartoon"],
+  "author": "Olivier Gueudelot",
+  "license": "GPL 3.0"
+  
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
