@@ -2,7 +2,7 @@
 
 Tagueule est un générateur d'avatar riche et moderne au look cartoonesque. Il a été imaginé pour permettre une grande diversité, et ses librairies s'enrichiront au file du temps.
 
-**[Démo](http://tagueule.com)**
+**[Démo](https://avatar.absolumentg.fr/)**
 
 ![](doc/tagueule.png) 
 
@@ -30,7 +30,11 @@ Toutes participation est la bienvenue. En particulier les artistes en herbes qui
 ```
 cd ~/git/tagueule/app
 docker build -t tagueule-image .
+<<<<<<< HEAD
 docker run -it -p 8080:80 --rm --name tagueule-app tagueule-image
+=======
+docker run -d -p 8080:80 --rm --name tagueule-app tagueule-image
+>>>>>>> f6caba6778855db433a7504b749c47c003eecae9
 ```
 L'application est désormais accessible à l'adresse `localhost:8080`
 
