@@ -49,7 +49,14 @@ export default class AssetsCollection {
                   idx: 0,
                   name: "Normaux",
                   path: "/eye/default",
-                  elements: [null, "01", "02", "03", "04", "05"],
+                  elements: [null, "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"],
+                  selectedIndex: 1,
+                },
+                {
+                  idx: 1,
+                  name: "Cyclope",
+                  path: "/eye/cyclop",
+                  elements: [null, "01"],
                   selectedIndex: 1,
                 }
             ]

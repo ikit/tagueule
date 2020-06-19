@@ -104,7 +104,10 @@
         for (const item of this.canvasItems) {
           item.object.scale(this.scale);
           item.color = this.colorPalette.getColor(item.colorId);
-          item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale, fill: item.color});
+          item.object.set({left: item.object.left * this.scale, top: item.object.top * this.scale });
+          if (item.color) {
+            item.object.set({ fill: item.color });
+          }
           canvas.add(item.object);
         }
       },
